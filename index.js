@@ -70,6 +70,22 @@ async function run(){
     res.send(reviews);
 });
 
+    // details section
+
+app.get('/review', async (req, res) => {
+  let query = {};
+  if (req.query.serviceid) {
+      query = {
+        serviceId: req.query.serviceid
+      }
+  }
+  const cursor = reviewCollection.find(query);
+  const review = await cursor.toArray();
+  res.send(review);
+});
+
+
+
 app.delete('/reviews/:id', async (req, res) => {
   const id = req.params.id;
   const query = { _id: ObjectId(id) };
