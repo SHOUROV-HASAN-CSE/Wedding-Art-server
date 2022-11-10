@@ -125,7 +125,7 @@ app.get('/review', async (req, res) => {
   }
   const cursor = reviewCollection.find(query);
   const review = await cursor.toArray();
-  res.send(review);
+  res.send(review.reverse());
 });
 
 
