@@ -66,7 +66,7 @@ async function run(){
     app.get('/serviceone', async (req, res) => {
       const query = {}
       const cursor = serviceCollection.find(query).sort({"_id" : -1});
-      const services = await cursor.limit(3).toArray();
+      const services = await cursor.limit(4).toArray();
       res.send(services);
   });
 
@@ -137,14 +137,10 @@ app.delete('/reviews/:id', async (req, res) => {
   res.send(result);
 })
 
-
-
-
-  }
+}
   finally{
-
   }
-
+  
 }
 
 run().catch(err=> console.error(err));
